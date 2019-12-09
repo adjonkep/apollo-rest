@@ -1,0 +1,15 @@
+mutation($input: OwnerInput){
+	addOwner(data: $input){
+    firstName
+  }
+}
+
+{
+  "input": {
+    "firstName": "Mattia",
+    "lastName": "Binotto",
+    "address": "123 maranello st",
+    "city": "Ferrari",
+    "telephone": "1234321423"
+  }
+}

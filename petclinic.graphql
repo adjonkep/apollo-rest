@@ -1,0 +1,71 @@
+type Owner {
+  id: Int!
+  firstName: String
+  lastName: String
+  address: String
+  city: String
+  telephone: String
+  pets: [Pet]
+}
+type Pet{
+  id: Int!
+  name: String
+  birthDate: String
+  type: Type
+  visits: [Visit]
+}
+type Type{
+  id: Int!
+  name: String
+}
+type Visit{
+  id: ID!
+  date: String
+  description: String
+  petId: Int
+}
+type Vet{
+  id: ID
+  firstName: String
+  lastName: String
+  specialties: [Specialty]
+  nrOfSpecialties: Int
+}
+type Specialty{
+  id: ID!
+  name: String
+}
+type Query {
+  owners: [Owner]
+  owner(id: ID!): Owner
+  pet(id: ID!): Pet
+  vets: [Vet]
+  visits(petId: ID!): [Visit]
+  types: [Type]
+}
+
+type Mutation{
+  addOwner(data: OwnerInput): Owner
+  updateOwner(data: OwnerInput, id: ID): String
+  addPet(data: PetInput): Pet
+  updatePet(data: PetInput): String
+  addVisit(data: VisitInput): Visit
+}
+input OwnerInput {
+  address: String!
+  city: String!
+  firstName: String!
+  lastName: String!
+  telephone: String!
+}
+input PetInput{
+  name: String
+  ownerId: Int
+  birthDate: String
+  typeId: Int
+}
+input VisitInput{
+  date: String
+  description: String
+  petId: Int
+}
